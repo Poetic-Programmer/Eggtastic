@@ -1,23 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CloudSpriteSelector {
-    Sprite[] sprite;
-    SpriteRenderer renderer;
-    
-	public CloudSpriteSelector(SpriteRenderer renderer, Sprite[] sprite)
+public class CloudSpriteSelector : MonoBehaviour{
+    public GameObject cloudPrefab;
+
+    Sprite[] mysprite;
+
+	void Start()
     {
-        this.renderer = renderer;
-        this.sprite = sprite;
-
-        int index = Random.Range(0, (int)sprite.Length-2);
-        this.renderer.sprite = this.sprite[index];
+        mysprite = Resources.LoadAll<Sprite>("clouds");
     }
 
     public void SelectNew()
     {
-        int index = Random.Range(0, (int)sprite.Length - 1);
-        renderer.sprite = sprite[index];
+        var Clone = (Instantiate(cloudPrefab, transform.position, transform.rotation)) as GameObject;
+        int i = Random.Range(0, mysprite.Length);
+        Clone.GetComponent<SpriteRenderer>().sprite = mysprite[i];
     }
 }
