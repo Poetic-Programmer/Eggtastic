@@ -9,8 +9,8 @@ using UnityEngine;
  */
 
 public class WindVelocitySelector {
-    private const float TIME_TO_WIND_CHANGE = 5;
-    private const float TIME_FOR_TRANSITION = 2;
+    private const float TIME_TO_WIND_CHANGE = 30;
+    private const float TIME_FOR_TRANSITION = 10;
 
     private WindState windState;
     private WindAnimationState windAnimationState;
